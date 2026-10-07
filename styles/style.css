@@ -434,7 +434,7 @@ main h2 {
     --wrap: none;
   }
 
-  @page { margin: 12mm 14mm; }
+  @page { size: A4; margin: 12mm 14mm; }
 
   html, body {
     background: #fff !important;
@@ -449,6 +449,12 @@ main h2 {
   /* A section that is still nothing but prompts would otherwise print as a bare
      heading with no content beneath it. */
   .is-placeholder { display: none !important; }
+
+  /* The first content section under the hero must not draw a second rule under
+     the contact strip when the section in between is a hidden placeholder.
+     Deliberately narrow: every other section keeps its separator. */
+  .hero + section,
+  .hero + .is-placeholder + section { border-top: 0 !important; }
 
   .wrap { max-width: none; padding: 0; }
 
@@ -488,7 +494,7 @@ main h2 {
   .bullets li::before { top: .58em; background: #666; }
   .links { font-size: 7.8pt; margin-top: .12rem; }
 
-  .skill-row { padding: .14rem 0; grid-template-columns: 8.5rem 1fr; gap: .6rem; }
+  .skill-row { padding: .14rem 0; grid-template-columns: 10.5rem 1fr; gap: .6rem; }
   .skill-row dt { font-size: 7.6pt; }
   .skill-row dd { font-size: 8.8pt; }
 
@@ -499,5 +505,7 @@ main h2 {
   .entry, .skill-row, .contact { break-inside: avoid; page-break-inside: avoid; }
   main h2 { break-after: avoid; page-break-after: avoid; }
   h3 { break-after: avoid; page-break-after: avoid; }
-  #projects .entry { break-inside: auto; page-break-inside: auto; }
+  /* keep project entries whole too — an entry split across the page break leaves
+     a stray bullet and its link line orphaned on the next page */
+  #projects .entry { break-inside: avoid; page-break-inside: avoid; }
 }

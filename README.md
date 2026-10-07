@@ -62,7 +62,7 @@ content, delete the class from that `<section>` tag.
 
 | Where | What is needed |
 | --- | --- |
-| `#about` | Empty on purpose — the bio still has to be written |
+| `#about` | Empty on purpose — the bio still has to be written. It carries `is-placeholder`, so the empty block stays out of the PDF; remove the class when you write it |
 | `#experience` | Internships, research or teaching positions — or delete the section |
 | `#awards` | Scholarships, competitions, publications — or delete the section |
 | `#skills` | The lists are inferred from the repositories; adjust proficiency honestly |
@@ -95,10 +95,11 @@ dark. It needs no dependencies and no test framework.
 ## Printing to PDF
 
 Press the printer icon in the header, or `Cmd`/`Ctrl` + `P`. The print stylesheet
-strips the navigation and controls, switches to black on white, sets A4 margins,
-and prevents entries from breaking across pages — the result is a clean one- to
-two-page CV. Because the PDF is generated from the live page, the web version and
-the PDF can never drift out of sync.
+strips the navigation and controls, switches to black on white (even when the
+site is in dark mode), declares `size: A4` with 12 × 14 mm margins, and prevents
+entries from breaking across pages — the result is a clean one- to two-page CV.
+Because the PDF is generated from the live page, the web version and the PDF can
+never drift out of sync.
 
 ## Keyboard shortcuts
 

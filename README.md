@@ -58,14 +58,21 @@ Sections that currently contain **nothing but** placeholders also carry an
 bare heading appears on paper with nothing under it. Once a section has real
 content, delete the class from that `<section>` tag.
 
+### Content sources
+
+The content is drawn from public repositories and from the 2025–2026 scholarship
+defence deck (`1425-聂磐-2025012164.pptx`, kept outside this repository). Section
+ids are stable even where a heading was renamed: `#experience` is now
+**Service & Practice** (class and college roles, field practice, volunteering),
+and `#awards` holds the competition results.
+
 ### Still to fill in
 
 | Where | What is needed |
 | --- | --- |
-| `#about` | Empty on purpose — the bio still has to be written. It carries `is-placeholder`, so the empty block stays out of the PDF; remove the class when you write it |
-| `#experience` | Internships, research or teaching positions — or delete the section |
-| `#awards` | Scholarships, competitions, publications — or delete the section |
+| `#experience` | Internships or research positions, once there are any — they belong alongside the current entries |
 | `#skills` | The lists are inferred from the repositories; adjust proficiency honestly |
+| `#awards` | Add scholarships or publications as they arrive |
 
 ## Validating changes
 
@@ -96,8 +103,9 @@ dark. It needs no dependencies and no test framework.
 
 Press the printer icon in the header, or `Cmd`/`Ctrl` + `P`. The print stylesheet
 strips the navigation and controls, switches to black on white (even when the
-site is in dark mode), declares `size: A4` with 12 × 14 mm margins, and prevents
-entries from breaking across pages — the result is a clean one- to two-page CV.
+site is in dark mode), declares `size: A4` with 12 × 14 mm margins, and keeps
+entries whole across page breaks — the result is a clean two- to three-page CV as
+the content stands.
 Because the PDF is generated from the live page, the web version and the PDF can
 never drift out of sync.
 

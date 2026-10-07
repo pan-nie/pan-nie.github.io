@@ -1,4 +1,4 @@
-# nathanpenny520.github.io
+# pan-nie.github.io
 
 My personal homepage — a **CV / résumé site** intended for professional contexts
 (job and graduate applications, conference bios, the link on a résumé).
@@ -124,7 +124,7 @@ Served by GitHub Pages from the `main` branch root of this repository. Pushing t
 `main` publishes automatically; there is no CI step.
 
 Note that a separate GitHub Pages site already exists at
-`nathanpenny520.github.io/nathanpenny.fun/` — project sites live on a subpath, so
+`pan-nie.github.io/nathanpenny.fun/` — project sites live on a subpath, so
 the two coexist and neither affects the other.
 
 ## Privacy

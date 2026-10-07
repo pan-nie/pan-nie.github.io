@@ -79,7 +79,20 @@ python3 check.py
 
 It fails if any anchor points at a missing id, any referenced asset is absent,
 any tag is left unclosed, the JSON-LD does not parse, or a container carries only
-one of the two languages. Run it after editing and before pushing.
+one of the two languages.
+
+`tests/i18n.test.js` exercises the language and theme logic — the part most
+likely to break during editing:
+
+```bash
+node tests/i18n.test.js
+```
+
+It runs the real inline bootstrap and the real `scripts/lang.js` against a small
+DOM stub, checking Chinese-locale detection, that a stored choice wins over the
+browser locale, that switching updates the document language and title, that the
+choice persists, and that the theme toggle behaves when the OS preference is
+dark. It needs no dependencies and no test framework.
 
 ## Printing to PDF
 

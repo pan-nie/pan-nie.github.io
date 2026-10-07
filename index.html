@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<script>
+  /* Set language and theme before first paint to avoid any flash. */
+  (function () {
+    var d = document.documentElement;
+    try {
+      var lang = localStorage.getItem('lang');
+      if (lang !== 'en' && lang !== 'zh') {
+        lang = (navigator.language || 'en').toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en';
+      }
+      d.setAttribute('data-lang', lang);
+      d.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+      var theme = localStorage.getItem('theme');
+      if (theme === 'light' || theme === 'dark') d.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>Nathan Penny — Tsinghua University · Local-first AI Systems</title>
+<meta name="description" content="Nathan Penny — undergraduate at Weiyang College, Tsinghua University. Builds local-first AI tools: an open-source email client on PyPI, a Qt 6 desktop AI assistant, and an MCP agent with 64 tools.">
+<meta name="author" content="Nathan Penny">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://nathanpenny520.github.io/">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Nathan Penny — Tsinghua University · Local-first AI Systems">
+<meta property="og:description" content="Undergraduate at Weiyang College, Tsinghua University. Builds local-first AI tools that keep your data on your own machine.">
+<meta property="og:url" content="https://nathanpenny520.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@NathanPenny520">
+
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./styles/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Nathan Penny",
+  "url": "https://nathanpenny520.github.io/",
+  "email": "mailto:hello@nathanpenny.fun",
+  "jobTitle": "Undergraduate Student",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Tsinghua University",
+    "department": "Weiyang College"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Beijing",
+    "addressCountry": "CN"
+  },
+  "knowsAbout": [
+    "Local-first software",
+    "Artificial intelligence",
+    "Desktop application development",
+    "Model Context Protocol"
+  ],
+  "knowsLanguage": ["zh-CN", "en"],
+  "sameAs": [
+    "https://github.com/nathanpenny520",
+    "https://x.com/NathanPenny520",
+    "https://nathanpenny.fun"
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">Nathan&nbsp;Penny</a>
+
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#about"><span data-lang="en">About</span><span data-lang="zh">简介</span></a>
+      <a href="#education"><span data-lang="en">Education</span><span data-lang="zh">教育</span></a>
+      <a href="#experience"><span data-lang="en">Experience</span><span data-lang="zh">经历</span></a>
+      <a href="#projects"><span data-lang="en">Projects</span><span data-lang="zh">项目</span></a>
+      <a href="#skills"><span data-lang="en">Skills</span><span data-lang="zh">技能</span></a>
+    </nav>
+
+    <div class="controls">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <button type="button" data-set-lang="zh">中文</button>
+      </div>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path class="i-sun" d="M12 17a5 5 0 100-10 5 5 0 000 10zm0 2.5v1.5M12 2.5V4M20.5 12H22M2 12h1.5M18.01 18.01l1.06 1.06M4.93 4.93l1.06 1.06M18.01 5.99l1.06-1.06M4.93 19.07l1.06-1.06" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle class="i-sun" cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path class="i-moon" d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="icon-btn print-btn" id="print-btn" aria-label="Print or save as PDF" title="Print / Save as PDF">
+        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M7 9V3h10v6M7 19H5a2 2 0 01-2-2v-5a2 2 0 012-2h14a2 2 0 012 2v5a2 2 0 01-2 2h-2M7 15h10v6H7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+
+  <!-- ─────────────── HERO ─────────────── -->
+  <section class="hero">
+    <h1>
+      <span data-lang="en">Nathan Penny</span>
+      <span data-lang="zh">Nathan Penny<span class="todo-inline">中文姓名待补充</span></span>
+    </h1>
+
+    <p class="role">
+      <span data-lang="en">Undergraduate, Weiyang College, Tsinghua University — building local-first AI systems and developer tools.</span>
+      <span data-lang="zh">清华大学未央书院本科生 —— 专注本地优先（local-first）的 AI 系统与开发者工具。</span>
+    </p>
+
+    <ul class="contact">
+      <li><span class="lbl">Email</span><a href="mailto:hello@nathanpenny.fun">hello@nathanpenny.fun</a></li>
+      <li><span class="lbl">GitHub</span><a href="https://github.com/nathanpenny520" rel="me">github.com/nathanpenny520</a></li>
+      <li><span class="lbl"><span data-lang="en">Site</span><span data-lang="zh">个人站</span></span><a href="https://nathanpenny.fun" rel="me">nathanpenny.fun</a></li>
+      <li><span class="lbl"><span data-lang="en">Based in</span><span data-lang="zh">所在地</span></span><span data-lang="en">Beijing, China</span><span data-lang="zh">中国 · 北京</span></li>
+    </ul>
+  </section>
+
+  <!-- ─────────────── ABOUT ─────────────── -->
+  <section id="about">
+    <h2><span data-lang="en">About</span><span data-lang="zh">个人简介</span></h2>
+
+    <p data-lang="en">
+      I build <strong>local-first AI tools</strong> — software that runs on your own machine, keeps your data
+      there, and still does real work. My projects span a Qt&nbsp;6 / C++17 desktop AI assistant, an open-source
+      email client distributed through PyPI, Homebrew and winget, and an MCP-based agent exposing 64 tools for
+      campus affairs. I care about systems that are private by default, honest about what they actually do, and
+      pleasant to use.
+    </p>
+    <p data-lang="zh">
+      我做<strong>本地优先的 AI 工具</strong>：软件跑在你自己的机器上，数据留在你手里，同时真正能干活。
+      我的项目覆盖 Qt&nbsp;6 / C++17 桌面 AI 助手、通过 PyPI / Homebrew / winget 分发的开源邮箱客户端，
+      以及一个对外暴露 64 个工具的 MCP 校园事务 agent。我在意三件事：默认保护隐私、不夸大实际能力、
+      用起来足够舒服。
+    </p>
+  </section>
+
+  <!-- ─────────────── EDUCATION ─────────────── -->
+  <section id="education">
+    <h2><span data-lang="en">Education</span><span data-lang="zh">教育背景</span></h2>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>
+          <span data-lang="en">Tsinghua University — Weiyang College</span>
+          <span data-lang="zh">清华大学 · 未央书院</span>
+        </h3>
+        <span class="period todo-inline" data-lang="en">20XX.09 – 20XX.06 (expected)</span>
+        <span class="period todo-inline" data-lang="zh">20XX.09 – 20XX.06（预计）</span>
+      </div>
+      <p class="entry-sub">
+        <span data-lang="en">B.Eng. candidate · <span class="todo-inline">major to be added</span></span>
+        <span data-lang="zh">本科在读 · <span class="todo-inline">专业方向待补充</span></span>
+      </p>
+      <ul class="bullets">
+        <li data-lang="en"><span class="todo-inline">GPA / class rank to be added</span></li>
+        <li data-lang="zh"><span class="todo-inline">GPA / 专业排名待补充</span></li>
+        <li data-lang="en">Relevant coursework: linear algebra, calculus, probability &amp; statistics, deep learning, computer systems.</li>
+        <li data-lang="zh">相关课程：线性代数、微积分、概率统计、深度学习、计算机系统。</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ─────────────── EXPERIENCE ─────────────── -->
+  <!--
+    `is-placeholder` on a section keeps it off the printed/PDF version while it still
+    holds nothing but prompts. Remove the class once the section has real content.
+  -->
+  <section id="experience" class="is-placeholder">
+    <h2><span data-lang="en">Experience</span><span data-lang="zh">实习与科研经历</span></h2>
+
+    <article class="entry placeholder-entry">
+      <div class="entry-head">
+        <h3 data-lang="en"><span class="todo-inline">Internship / research position to be added</span></h3>
+        <h3 data-lang="zh"><span class="todo-inline">实习 / 科研岗位待补充</span></h3>
+        <span class="period todo-inline" data-lang="en">20XX.XX – 20XX.XX</span>
+        <span class="period todo-inline" data-lang="zh">20XX.XX – 20XX.XX</span>
+      </div>
+      <p class="entry-sub" data-lang="en"><span class="todo-inline">Organisation · role</span></p>
+      <p class="entry-sub" data-lang="zh"><span class="todo-inline">单位 · 职位</span></p>
+      <ul class="bullets">
+        <li data-lang="en"><span class="todo-inline">One line on what you did and what changed as a result.</span></li>
+        <li data-lang="zh"><span class="todo-inline">一句话说明你做了什么、带来了什么变化。</span></li>
+        <li data-lang="en"><span class="todo-inline">Prefer numbers: scale, latency, users, accuracy.</span></li>
+        <li data-lang="zh"><span class="todo-inline">尽量带数字：规模、延迟、用户量、准确率。</span></li>
+      </ul>
+    </article>
+
+    <p class="hint" data-lang="en">
+      No internship yet? Delete this section — a CV with three strong independent projects reads better than one
+      padded with an empty heading.
+    </p>
+    <p class="hint" data-lang="zh">
+      还没有实习经历？直接删掉这一节 —— 三个扎实的独立项目，比一个空标题更有说服力。
+    </p>
+  </section>
+
+  <!-- ─────────────── PROJECTS ─────────────── -->
+  <section id="projects">
+    <h2><span data-lang="en">Selected Projects</span><span data-lang="zh">主要项目</span></h2>
+    <p class="section-note" data-lang="en">Independent work, all open source. Source links included.</p>
+    <p class="section-note" data-lang="zh">均为独立开发，全部开源，附源码链接。</p>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Nmail</h3>
+        <span class="period">2026.09 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+      </div>
+      <p class="entry-sub">
+        <span data-lang="en">Local-first AI email client · Python, FastAPI, React · MIT · on PyPI, Homebrew &amp; winget</span>
+        <span data-lang="zh">本地优先 AI 邮箱客户端 · Python / FastAPI / React · MIT · 已上 PyPI、Homebrew 与 winget</span>
+      </p>
+      <ul class="bullets">
+        <li data-lang="en">Aggregates multiple mailboxes into one inbox with 20 preset providers (Gmail, Outlook, QQ, 163) and one-click OAuth.</li>
+        <li data-lang="zh">多账号聚合到单一收件箱，内置 Gmail / Outlook / QQ / 163 等 20 家预设服务商，支持一键 OAuth 授权。</li>
+        <li data-lang="en">An AI steward classifies, archives, drafts replies and compiles a daily digest — every write action requires explicit human approval and stays auditable and reversible.</li>
+        <li data-lang="zh">AI 总管家负责分类、归档、起草回复与生成每日摘要 —— 所有写操作必须经人工审批，全程可追溯、可撤销。</li>
+        <li data-lang="en">Privacy by architecture: the service binds only to 127.0.0.1, with no account system, no telemetry and no cloud dependency; pointing it at Ollama or LM Studio enables fully offline inference.</li>
+        <li data-lang="zh">从架构上保证隐私：服务仅监听 127.0.0.1，无账号体系、无遥测、不依赖云端；指向 Ollama / LM Studio 即可完全离线推理。</li>
+        <li data-lang="en">Shipped to users through PyPI (<code>nmail-app</code>, 10 releases), Homebrew, winget and single-file executables for Windows, macOS and Linux.</li>
+        <li data-lang="zh">通过 PyPI（<code>nmail-app</code>，10 个版本）、Homebrew、winget 及 Windows / macOS / Linux 单文件可执行程序分发给用户。</li>
+      </ul>
+      <p class="links">
+        <a href="https://github.com/nathanpenny520/Nmail">github.com/nathanpenny520/Nmail</a>
+        <a href="https://pypi.org/project/nmail-app/">pypi.org/project/nmail-app</a>
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>LocalAIAssistant</h3>
+        <span class="period">2026.04 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+      </div>
+      <p class="entry-sub">
+        <span data-lang="en">Cross-platform desktop AI assistant · C++17, Qt 6, ONNX Runtime · MIT</span>
+        <span data-lang="zh">跨平台桌面 AI 助手 · C++17 / Qt 6 / ONNX Runtime · MIT</span>
+      </p>
+      <ul class="bullets">
+        <li data-lang="en">A single binary offering both a GUI and a CLI, with SSE streaming output, persistent multi-session history, English/Chinese UI and light/dark/system themes.</li>
+        <li data-lang="zh">单一二进制同时提供 GUI 与 CLI，支持 SSE 流式输出、多会话历史持久化、中英双语界面与明暗 / 跟随系统主题。</li>
+        <li data-lang="en">Built a retrieval module supporting TXT/MD/PDF/DOCX import, automatic chunking and vectorisation, and HNSW approximate nearest-neighbour search — all embeddings computed locally through ONNX Runtime with no network access.</li>
+        <li data-lang="zh">实现检索模块：支持 TXT/MD/PDF/DOCX 导入、自动切分与向量化、HNSW 近似最近邻检索；嵌入向量全部经 ONNX Runtime 本地推理，无需联网。</li>
+        <li data-lang="en">Designed an agent loop (up to 10 iterations) that parses JSON task plans and executes them via native Qt file APIs rather than shell commands, with cross-platform shell detection where a shell is genuinely needed.</li>
+        <li data-lang="zh">设计 Agent 迭代循环（最多 10 轮）：解析 JSON 任务计划，优先用 Qt 原生文件 API 而非 shell 执行，仅在必要时才做跨平台 Shell 探测。</li>
+        <li data-lang="en">Implemented a three-tier command safety model — permanently blocked patterns, confirmed operations, and an allow-list — so that destructive commands cannot be reached by prompt injection alone.</li>
+        <li data-lang="zh">实现三级命令安全模型 —— 永久拦截、二次确认、白名单执行 —— 使破坏性命令无法仅凭提示注入被触发。</li>
+      </ul>
+      <p class="links">
+        <a href="https://github.com/nathanpenny520/LocalAIAssistant">github.com/nathanpenny520/LocalAIAssistant</a>
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Tsinghua Agent</h3>
+        <span class="period">2026.09 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+      </div>
+      <p class="entry-sub">
+        <span data-lang="en">Long-running personal agent and MCP server · TypeScript, SQLite, MCP</span>
+        <span data-lang="zh">长程执行个人 agent 与 MCP server · TypeScript / SQLite / MCP</span>
+      </p>
+      <ul class="bullets">
+        <li data-lang="en">Exposes 64 tools (34 read-only, 30 write/monitoring) over the Model Context Protocol, connecting through stdio to Claude Code, Cursor, Codex CLI and other local agents.</li>
+        <li data-lang="zh">通过 Model Context Protocol 暴露 64 个工具（34 个只读 + 30 个写 / 监控），经 stdio 接入 Claude Code、Cursor、Codex CLI 等本地 agent。</li>
+        <li data-lang="en">Wrote a resident supervisor daemon that keeps sessions alive and pushes notifications on grades, electricity balance, card balance, campus news and course-registration windows.</li>
+        <li data-lang="zh">编写常驻 supervisor 守护进程，维持会话存活，并在成绩、电费、卡余额、校内新闻与选课窗口变化时推送通知。</li>
+        <li data-lang="en">Records an audit trail, pending confirmations and monitoring rules in SQLite; automates TOTP two-factor authentication end to end.</li>
+        <li data-lang="zh">以 SQLite 记录审计日志、待确认操作与监控规则；端到端自动化 TOTP 二次认证。</li>
+        <li data-lang="en">Structured as a pnpm monorepo separating the protocol layer, session core, MCP server, supervisor and CLI.</li>
+        <li data-lang="zh">组织为 pnpm monorepo，分离协议层、会话内核、MCP server、supervisor 与 CLI。</li>
+      </ul>
+      <p class="links">
+        <a href="https://github.com/nathanpenny520/TsinghuaMCP">github.com/nathanpenny520/TsinghuaMCP</a>
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>TsinghuaSurvive</h3>
+        <span class="period">2026.07 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+      </div>
+      <p class="entry-sub">
+        <span data-lang="en">Student-written survival guide for Tsinghua · Astro Starlight, TypeScript</span>
+        <span data-lang="zh">面向清华在校生的经验分享站 · Astro Starlight / TypeScript</span>
+      </p>
+      <ul class="bullets">
+        <li data-lang="en">Live at tsinghua.nathanpenny.fun, written from a student's point of view rather than an official one.</li>
+        <li data-lang="zh">已上线 tsinghua.nathanpenny.fun，内容来自学生视角而非官方口径。</li>
+        <li data-lang="en">Integrated an in-site CMS so contributors can edit text, drop in images and embed video without touching Git; media is converted to WebP and stored on R2 rather than committed.</li>
+        <li data-lang="zh">接入站内 CMS，贡献者无需接触 Git 即可改文字、拖图、嵌视频；媒体自动转 WebP 并存储于 R2，不进入版本库。</li>
+        <li data-lang="en">Built a content-freshness policy engine that flags material as stale after a configurable window, with draft/outdated states and review timestamps validated in CI.</li>
+        <li data-lang="zh">实现内容时效策略引擎：超过可配置期限自动标记为过期，草稿 / 过期状态与复核时间戳由 CI 校验。</li>
+        <li data-lang="en">Continuous deployment on push to main, with content and link-checking checks guarding every change.</li>
+        <li data-lang="zh">推送 main 即自动构建部署，每次变更都有内容校验与链接检查把关。</li>
+      </ul>
+      <p class="links">
+        <a href="https://tsinghua.nathanpenny.fun">tsinghua.nathanpenny.fun</a>
+        <a href="https://github.com/nathanpenny520/TsinghuaSurvive">github.com/nathanpenny520/TsinghuaSurvive</a>
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>DeepLearningCourseForMe</h3>
+        <span class="period">2026.08 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+      </div>
+      <p class="entry-sub">
+        <span data-lang="en">Self-taught deep learning curriculum · Python, Jupyter · MIT · 8 modules, 62 lessons</span>
+        <span data-lang="zh">深度学习自学课程 · Python / Jupyter · MIT · 8 个模块、62 讲</span>
+      </p>
+      <ul class="bullets">
+        <li data-lang="en">Wrote 62 lessons of notes and runnable code across 8 modules, built from first principles and paired with a video series.</li>
+        <li data-lang="zh">撰写 8 个模块、62 讲的笔记与可运行代码，从第一性原理出发，并配套同名视频系列。</li>
+        <li data-lang="en">Covers linear algebra, calculus, probability and statistics, neural-network fundamentals, CNN/Transformer architectures, computer vision, large language models and applied ML engineering.</li>
+        <li data-lang="zh">覆盖线性代数、微积分、概率统计、神经网络核心、CNN / Transformer、计算机视觉、大语言模型与应用工程实战。</li>
+        <li data-lang="en">Each module carries its own locked virtual environment managed with uv, so any single lesson can be reproduced in isolation.</li>
+        <li data-lang="zh">每个模块拥有独立且锁定依赖的虚拟环境（uv 管理），任意一讲都可单独复现。</li>
+      </ul>
+      <p class="links">
+        <a href="https://github.com/nathanpenny520/DeepLearningCourseForMe">github.com/nathanpenny520/DeepLearningCourseForMe</a>
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>nathanpenny.fun</h3>
+        <span class="period">2026.06 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+      </div>
+      <p class="entry-sub">
+        <span data-lang="en">Personal website and blog · hand-written HTML/CSS/JS, no framework</span>
+        <span data-lang="zh">个人网站与博客 · 手写 HTML/CSS/JS，零框架</span>
+      </p>
+      <ul class="bullets">
+        <li data-lang="en">Hand-built from scratch with no framework: blog, gallery, RSS feed, sitemap and a light/dark theme applied before first paint.</li>
+        <li data-lang="zh">完全从零手写、不依赖框架：博客、画廊、RSS 订阅、站点地图，以及首屏渲染前即生效的明暗主题。</li>
+        <li data-lang="en">Installable as a PWA through a service worker and manifest, deployed on Cloudflare with GitHub Pages as a mirror.</li>
+        <li data-lang="zh">借助 Service Worker 与 manifest 支持 PWA 安装，部署于 Cloudflare，并以 GitHub Pages 作为镜像备份。</li>
+      </ul>
+      <p class="links">
+        <a href="https://nathanpenny.fun">nathanpenny.fun</a>
+        <a href="https://github.com/nathanpenny520/nathanpenny.fun">github.com/nathanpenny520/nathanpenny.fun</a>
+      </p>
+    </article>
+
+    <p class="also">
+      <span data-lang="en"><strong>Also:</strong></span>
+      <span data-lang="zh"><strong>其他：</strong></span>
+      <a href="https://github.com/nathanpenny520/nmail-site">nmail-site</a><span data-lang="en"> (Astro&nbsp;5 marketing site, zero client-side JS, Cloudflare Workers)</span><span data-lang="zh">（Astro&nbsp;5 官网，零客户端 JS，Cloudflare Workers 部署）</span>,
+      <a href="https://github.com/nathanpenny520/whizzzest.com">whizzzest.com</a><span data-lang="en"> (digital cultural-tourism experience)</span><span data-lang="zh">（数字文旅体验站）</span>,
+      <a href="https://github.com/nathanpenny520/wechat-article">wechat-article</a><span data-lang="en"> (Python toolchain automating WeChat article production)</span><span data-lang="zh">（自动化微信公众号内容生产的 Python 工具链）</span>.
+    </p>
+  </section>
+
+  <!-- ─────────────── SKILLS ─────────────── -->
+  <section id="skills">
+    <h2><span data-lang="en">Technical Skills</span><span data-lang="zh">技术能力</span></h2>
+
+    <dl class="skills">
+      <div class="skill-row">
+        <dt><span data-lang="en">Languages</span><span data-lang="zh">编程语言</span></dt>
+        <dd>Python · TypeScript / JavaScript · C++ (C++17) · HTML / CSS · SQL</dd>
+      </div>
+      <div class="skill-row">
+        <dt><span data-lang="en">Frameworks</span><span data-lang="zh">框架与运行时</span></dt>
+        <dd>FastAPI · React · Qt&nbsp;6 · Astro · Node.js</dd>
+      </div>
+      <div class="skill-row">
+        <dt><span data-lang="en">AI &amp; Data</span><span data-lang="zh">AI 与数据</span></dt>
+        <dd><span data-lang="en">Model Context Protocol (MCP) · LLM agent design · RAG / vector retrieval · ONNX Runtime · HNSW · SQLite</span><span data-lang="zh">Model Context Protocol（MCP）· LLM agent 设计 · RAG / 向量检索 · ONNX Runtime · HNSW · SQLite</span></dd>
+      </div>
+      <div class="skill-row">
+        <dt><span data-lang="en">Systems</span><span data-lang="zh">系统与协议</span></dt>
+        <dd><span data-lang="en">Desktop application architecture · REST &amp; SSE · OAuth · IMAP / SMTP · PWA &amp; Service Workers</span><span data-lang="zh">桌面应用架构 · REST 与 SSE · OAuth · IMAP / SMTP · PWA 与 Service Worker</span></dd>
+      </div>
+      <div class="skill-row">
+        <dt><span data-lang="en">Tooling</span><span data-lang="zh">工程工具</span></dt>
+        <dd>Git · GitHub Actions · Cloudflare Workers / Pages · uv · pnpm · CMake / qmake</dd>
+      </div>
+      <div class="skill-row">
+        <dt><span data-lang="en">Languages spoken</span><span data-lang="zh">自然语言</span></dt>
+        <dd><span data-lang="en">Chinese (native) · English (professional working proficiency)</span><span data-lang="zh">中文（母语）· 英语（可作为工作语言）</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ─────────────── AWARDS ─────────────── -->
+  <section id="awards" class="is-placeholder">
+    <h2><span data-lang="en">Honours &amp; Awards</span><span data-lang="zh">荣誉与奖项</span></h2>
+    <p class="hint todo-inline" data-lang="en">Scholarships, competition results and publications to be added — delete this section if there are none yet.</p>
+    <p class="hint todo-inline" data-lang="zh">奖学金、竞赛成绩、论文发表等待补充 —— 若暂时没有，直接删掉本节。</p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>
+      <a href="mailto:hello@nathanpenny.fun">hello@nathanpenny.fun</a>
+      <span class="sep">·</span>
+      <a href="https://github.com/nathanpenny520" rel="me">GitHub</a>
+      <span class="sep">·</span>
+      <a href="https://x.com/NathanPenny520" rel="me">X</a>
+      <span class="sep">·</span>
+      <a href="https://nathanpenny.fun" rel="me">nathanpenny.fun</a>
+    </p>
+    <p class="fine">
+      <span data-lang="en">Last updated <time datetime="2026-10-07">October 2026</time></span>
+      <span data-lang="zh">最后更新：<time datetime="2026-10-07">2026 年 10 月</time></span>
+    </p>
+  </div>
+</footer>
+
+<script src="./scripts/lang.js" defer></script>
+</body>
+</html>

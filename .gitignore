@@ -1,0 +1,9 @@
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# local render-verification harness (screenshots, PDFs, headless Chrome profile)
+.preview/
+.chrome-profile/

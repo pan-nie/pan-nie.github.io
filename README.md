@@ -4,7 +4,8 @@ My personal homepage — a **CV / résumé site** intended for professional cont
 (job and graduate applications, conference bios, the link on a résumé).
 
 It is deliberately restrained: typography-led, no decorative animation, no build
-step. It publishes no email address, phone number or personal-site link.
+step. It publishes one contact email address and no phone number, ID number,
+home address or personal-site link.
 
 ## Stack
 
@@ -125,7 +126,7 @@ not affect this root site.
 
 ## Privacy
 
-This page intentionally does **not** publish a phone number, email address, ID
-number, home address or other identifiers that are common on printed Chinese
-CVs. Those are routinely harvested by crawlers. Keep the full version for direct
-applications.
+The only contact detail on this page is a single email address. It intentionally
+does **not** publish a phone number, ID number, home address or other
+identifiers that are common on printed Chinese CVs — those are routinely
+harvested by crawlers. Keep that fuller version for direct applications.

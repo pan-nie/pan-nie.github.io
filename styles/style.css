@@ -80,6 +80,8 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   font-variant-numeric: oldstyle-nums;
+  /* Long repository URLs must never widen the layout on narrow screens. */
+  overflow-wrap: break-word;
 }
 
 .wrap {
@@ -323,7 +325,9 @@ main h2 {
   flex-wrap: wrap;
   gap: .35rem 1rem;
 }
-.links a { font-family: var(--font-mono); font-size: .95em; }
+/* Monospaced URLs are long unbreakable tokens; allow them to break mid-word so a
+   single link cannot push the whole page wider than the viewport. */
+.links a { font-family: var(--font-mono); font-size: .95em; overflow-wrap: anywhere; min-width: 0; }
 
 .also {
   margin-top: 1.5rem;
@@ -331,6 +335,7 @@ main h2 {
   border-top: 1px dashed var(--rule);
   font-size: .875rem;
   color: var(--fg-muted);
+  overflow-wrap: anywhere;
 }
 
 /* ---------- skills ---------- */

@@ -4,9 +4,7 @@ My personal homepage — a **CV / résumé site** intended for professional cont
 (job and graduate applications, conference bios, the link on a résumé).
 
 It is deliberately restrained: typography-led, no decorative animation, no build
-step. The playful, creative side of my work lives at
-[nathanpenny.fun](https://nathanpenny.fun) — the two sites link to each other and
-serve different purposes.
+step. It publishes no email address, phone number or personal-site link.
 
 ## Stack
 
@@ -63,8 +61,7 @@ content, delete the class from that `<section>` tag.
 
 | Where | What is needed |
 | --- | --- |
-| Hero | Chinese name |
-| `#education` | Major, start/end dates, GPA or class rank |
+| `#about` | Empty on purpose — the bio still has to be written |
 | `#experience` | Internships, research or teaching positions — or delete the section |
 | `#awards` | Scholarships, competitions, publications — or delete the section |
 | `#skills` | The lists are inferred from the repositories; adjust proficiency honestly |
@@ -123,13 +120,12 @@ Then open <http://localhost:8000>.
 Served by GitHub Pages from the `main` branch root of this repository. Pushing to
 `main` publishes automatically; there is no CI step.
 
-Note that a separate GitHub Pages site already exists at
-`pan-nie.github.io/nathanpenny.fun/` — project sites live on a subpath, so
-the two coexist and neither affects the other.
+Note that project sites deploy to a subpath (`pan-nie.github.io/<repo>/`) and do
+not affect this root site.
 
 ## Privacy
 
-This page intentionally does **not** publish a phone number, ID number, home
-address or other identifiers that are common on printed Chinese CVs. Those are
-routinely harvested by crawlers. Keep the full version for direct applications
-and leave only an email address here.
+This page intentionally does **not** publish a phone number, email address, ID
+number, home address or other identifiers that are common on printed Chinese
+CVs. Those are routinely harvested by crawlers. Keep the full version for direct
+applications.

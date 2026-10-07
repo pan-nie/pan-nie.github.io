@@ -4,8 +4,8 @@
 
   var root = document.documentElement;
   var TITLES = {
-    en: 'Nathan Penny — Tsinghua University · Local-first AI Systems',
-    zh: 'Nathan Penny — 清华大学 · 本地优先 AI 系统'
+    en: 'Pan Nie — Tsinghua University · Local-first AI Systems',
+    zh: '聂磐 Pan Nie — 清华大学 · 本地优先 AI 系统'
   };
 
   function store(key, value) {

@@ -226,13 +226,6 @@ html[data-theme="dark"] #theme-toggle .i-moon { display: none; }
   text-align: center;
 }
 
-.role {
-  margin: 0 0 1.5rem;
-  max-width: 42rem;
-  font-size: 1.075rem;
-  color: var(--fg-muted);
-}
-
 .contact {
   list-style: none;
   display: grid;
@@ -477,7 +470,6 @@ main h2 {
 
   .hero { padding: 0 0 .45rem; }
   .hero h1 { font-size: 17pt; margin-bottom: .2rem; }
-  .role { font-size: 9.8pt; margin-bottom: .45rem; }
   .contact {
     border-top: 1px solid #000;
     padding-top: .4rem;

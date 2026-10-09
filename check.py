@@ -100,12 +100,14 @@ def main():
             fails.append(f"JSON-LD does not parse: {e}")
 
     # --- i18n pairing ---------------------------------------------------
+    # Language-agnostic: whatever set of data-lang values the page uses, every
+    # container that holds translatable copy should hold all of them.
+    found = sorted(set(re.findall(r'data-lang="([^"]+)"', src)))
+    n_lang = {l: src.count(f'data-lang="{l}"') for l in found}
     unbalanced = []
-    for nid, langs in d.lang_children.items():
-        if langs == {"en"} or langs == {"zh"}:
-            unbalanced.append(sorted(langs)[0])
-    n_en = src.count('data-lang="en"')
-    n_zh = src.count('data-lang="zh"')
+    for langs in d.lang_children.values():
+        if set(langs) != set(found):
+            unbalanced.append(set(found) - set(langs))
 
     # --- report ---------------------------------------------------------
     print(f"html size          : {len(src):,} bytes")
@@ -114,14 +116,18 @@ def main():
           if not any("anchor" in f for f in fails) else "anchor targets: BROKEN")
     print(f"local assets       : {len(set(d.assets))} (all present)"
           if not any("missing asset" in f for f in fails) else "local assets: MISSING")
-    print(f"data-lang en / zh  : {n_en} / {n_zh}")
+    print("data-lang          : " + " / ".join(f"{l} {n_lang[l]}" for l in found))
     print(f"unpaired containers: {len(unbalanced)}")
     print()
 
     if unbalanced:
-        print("Containers with only one language (may be intentional):")
-        for u in set(unbalanced):
-            print(f"  - only [{u}] present in {unbalanced.count(u)} container(s)")
+        print("Containers missing one or more languages (may be intentional):")
+        gaps = {}
+        for missing in unbalanced:
+            key = "missing " + " + ".join(sorted(missing))
+            gaps[key] = gaps.get(key, 0) + 1
+        for key, count in sorted(gaps.items()):
+            print(f"  - {key} in {count} container(s)")
         print()
 
     if fails:

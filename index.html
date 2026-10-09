@@ -8,11 +8,12 @@
     var d = document.documentElement;
     try {
       var lang = localStorage.getItem('lang');
-      if (lang !== 'en' && lang !== 'zh') {
-        lang = (navigator.language || 'en').toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en';
+      if (lang !== 'en' && lang !== 'zh' && lang !== 'es') {
+        var nav = (navigator.language || 'en').toLowerCase();
+        lang = nav.indexOf('zh') === 0 ? 'zh' : nav.indexOf('es') === 0 ? 'es' : 'en';
       }
       d.setAttribute('data-lang', lang);
-      d.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+      d.setAttribute('lang', lang === 'zh' ? 'zh-CN' : lang === 'es' ? 'es' : 'en');
       var theme = localStorage.getItem('theme');
       if (theme === 'light' || theme === 'dark') d.setAttribute('data-theme', theme);
     } catch (e) {}
@@ -20,15 +21,15 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
-<title>Pan Nie — Tsinghua University · Local-first AI Systems</title>
-<meta name="description" content="Pan Nie (聂磐) — undergraduate at Weiyang College, Tsinghua University, studying Measurement and Control Technology and Instruments. Builds local-first AI tools: an open-source email client on PyPI, a Qt 6 desktop AI assistant, and an MCP agent with 64 tools.">
+<title>Pan Nie</title>
+<meta name="description" content="Pan Nie (聂磐).">
 <meta name="author" content="Pan Nie">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://pan-nie.github.io/">
 
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Pan Nie — Tsinghua University · Local-first AI Systems">
-<meta property="og:description" content="Undergraduate at Weiyang College, Tsinghua University. Builds local-first AI tools that keep your data on your own machine.">
+<meta property="og:title" content="Pan Nie">
+<meta property="og:description" content="Undergraduate at Weiyang College, Tsinghua University.">
 <meta property="og:url" content="https://pan-nie.github.io/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@pan_nie_thu">
@@ -61,7 +62,13 @@
     "Desktop application development",
     "Model Context Protocol"
   ],
-  "knowsLanguage": ["zh-CN", "en"],
+  "knowsLanguage": ["zh-CN", "en", "es"],
+  "award": [
+    "Comprehensive Excellence Scholarship, Tsinghua University, 2026",
+    "Second Prize, E-Commerce Innovation Challenge, Beijing regional round, 2026",
+    "Second Prize, Tsinghua University \"Carbon Neutrality\" Student Innovation Competition, 2026",
+    "Second Prize (twice), Weiyang College Field Practice Award, 2026"
+  ],
   "sameAs": [
     "https://github.com/pan-nie",
     "https://x.com/pan_nie_thu",
@@ -74,21 +81,36 @@
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="#top"><span data-lang="en">Pan&nbsp;Nie</span><span data-lang="zh">聂磐</span></a>
+    <a class="brand" href="#top"><span data-lang="en">Pan&nbsp;Nie</span>
+    <span data-lang="es">Pan&nbsp;Nie</span>
+    <span data-lang="zh">聂磐</span></a>
 
     <nav class="site-nav" aria-label="Sections">
-      <a href="#about"><span data-lang="en">About</span><span data-lang="zh">简介</span></a>
-      <a href="#education"><span data-lang="en">Education</span><span data-lang="zh">教育</span></a>
-      <a href="#experience"><span data-lang="en">Service</span><span data-lang="zh">社工与实践</span></a>
-      <a href="#projects"><span data-lang="en">Projects</span><span data-lang="zh">项目</span></a>
-      <a href="#skills"><span data-lang="en">Skills</span><span data-lang="zh">技能</span></a>
-      <a href="#awards"><span data-lang="en">Awards</span><span data-lang="zh">荣誉</span></a>
+      <a href="#about"><span data-lang="en">About</span>
+      <span data-lang="es">Sobre mí</span>
+      <span data-lang="zh">简介</span></a>
+      <a href="#education"><span data-lang="en">Education</span>
+      <span data-lang="es">Formación</span>
+      <span data-lang="zh">教育</span></a>
+      <a href="#experience"><span data-lang="en">Service</span>
+      <span data-lang="es">Servicio</span>
+      <span data-lang="zh">社工与实践</span></a>
+      <a href="#projects"><span data-lang="en">Projects</span>
+      <span data-lang="es">Proyectos</span>
+      <span data-lang="zh">项目</span></a>
+      <a href="#skills"><span data-lang="en">Skills</span>
+      <span data-lang="es">Competencias</span>
+      <span data-lang="zh">技能</span></a>
+      <a href="#awards"><span data-lang="en">Awards</span>
+      <span data-lang="es">Premios</span>
+      <span data-lang="zh">荣誉</span></a>
     </nav>
 
     <div class="controls">
       <div class="lang-switch" role="group" aria-label="Language">
-        <button type="button" data-set-lang="en">EN</button>
-        <button type="button" data-set-lang="zh">中文</button>
+        <button type="button" data-set-lang="en" lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-set-lang="zh" lang="zh-Hans" aria-pressed="false">中文</button>
+        <button type="button" data-set-lang="es" lang="es" aria-pressed="false">ES</button>
       </div>
       <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
         <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path class="i-sun" d="M12 17a5 5 0 100-10 5 5 0 000 10zm0 2.5v1.5M12 2.5V4M20.5 12H22M2 12h1.5M18.01 18.01l1.06 1.06M4.93 4.93l1.06 1.06M18.01 5.99l1.06-1.06M4.93 19.07l1.06-1.06" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle class="i-sun" cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path class="i-moon" d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -106,25 +128,33 @@
   <section class="hero">
     <h1>
       <span data-lang="en">Pan Nie</span>
+      <span data-lang="es">Pan Nie</span>
       <span data-lang="zh">聂磐</span>
     </h1>
 
     <p class="role">
-      <span data-lang="en">Undergraduate, Weiyang College, Tsinghua University — building local-first AI systems and developer tools.</span>
-      <span data-lang="zh">清华大学未央书院本科生 —— 专注本地优先（local-first）的 AI 系统与开发者工具。</span>
+      <span data-lang="en">Undergraduate, Weiyang College, Tsinghua University — precision instrument and basic sciences, working on agentic engineering, machine learning and full-stack development.</span>
+      <span data-lang="es">Estudiante de grado, Weiyang College, Tsinghua University — instrumentación de precisión y ciencias básicas, con trabajo en ingeniería de agentes, aprendizaje automático y desarrollo full-stack.</span>
+      <span data-lang="zh">清华大学未央书院本科生 —— 精密仪器与数理基础科学方向，专注智能体工程、机器学习与全栈开发。</span>
     </p>
 
     <ul class="contact">
       <li><span class="lbl">Email</span><a href="mailto:pan.nie@outlook.com">pan.nie@outlook.com</a></li>
       <li><span class="lbl">GitHub</span><a href="https://github.com/pan-nie" rel="me">github.com/pan-nie</a></li>
       <li><span class="lbl">LinkedIn</span><a href="https://www.linkedin.com/in/pan_nie" rel="me">linkedin.com/in/pan_nie</a></li>
-      <li><span class="lbl"><span data-lang="en">Based in</span><span data-lang="zh">所在地</span></span><span data-lang="en">Beijing, China</span><span data-lang="zh">中国 · 北京</span></li>
+      <li><span class="lbl"><span data-lang="en">Based in</span>
+      <span data-lang="es">Ubicación</span>
+      <span data-lang="zh">所在地</span></span><span data-lang="en">Beijing, China</span>
+      <span data-lang="es">Pekín, China</span>
+      <span data-lang="zh">中国 · 北京</span></li>
     </ul>
   </section>
 
   <!-- ─────────────── ABOUT ─────────────── -->
   <section id="about">
-    <h2><span data-lang="en">About</span><span data-lang="zh">个人简介</span></h2>
+    <h2><span data-lang="en">About</span>
+    <span data-lang="es">Sobre mí</span>
+    <span data-lang="zh">个人简介</span></h2>
 
     <p data-lang="en">
       I build <strong>local-first tools that solve problems I actually have</strong>. My first year at Tsinghua
@@ -134,6 +164,12 @@
       honest. I put the same energy into the groups I am part of — as class League secretary, across four rounds
       of field practice, and in more than 200 hours of volunteering.
     </p>
+    <p data-lang="es">Construyo <strong>herramientas local-first que resuelven problemas que tengo de verdad</strong>. Mi primer año en Tsinghua
+      los convirtió en varios proyectos en marcha: digitalizar la cultura pirotécnica de Wanzai, mi ciudad natal en Jiangxi,
+      un cliente de correo con IA que mantiene todos los buzones en tu propio equipo y un asistente de escritorio con IA y
+      recuperación totalmente offline. Dos hábitos recorren todo esto: los datos se quedan con su dueño y las cifras deben ser
+      honestas. Pongo la misma energía en los grupos de los que formo parte — como secretario de la Liga Juvenil de la clase, en cuatro
+      rondas de prácticas de campo y en más de 200 horas de voluntariado.</p>
     <p data-lang="zh">
       我做<strong>真正解决自己问题的本地优先工具</strong>。大一这一年，这些想法变成了几个上线的项目：把家乡
       江西万载的烟花文化数字化、让所有邮箱都留在自己电脑上的 AI 邮箱客户端，以及检索完全离线的桌面 AI 助手。
@@ -144,51 +180,68 @@
 
   <!-- ─────────────── EDUCATION ─────────────── -->
   <section id="education">
-    <h2><span data-lang="en">Education</span><span data-lang="zh">教育背景</span></h2>
+    <h2><span data-lang="en">Education</span>
+    <span data-lang="es">Formación académica</span>
+    <span data-lang="zh">教育背景</span></h2>
 
     <article class="entry">
       <div class="entry-head">
         <h3>
           <span data-lang="en">Tsinghua University — Weiyang College</span>
+          <span data-lang="es">Tsinghua University — Weiyang College</span>
           <span data-lang="zh">清华大学 · 未央书院</span>
         </h3>
         <span class="period" data-lang="en">2025.08 – 2029.06 (expected)</span>
+        <span class="period" data-lang="es">2025.08 – 2029.06 (previsto)</span>
         <span class="period" data-lang="zh">2025.08 – 2029.06（预计）</span>
       </div>
       <p class="entry-sub">
-        <span data-lang="en">B.Eng. candidate · Measurement and Control Technology and Instruments</span>
-        <span data-lang="zh">本科在读 · 测控仪器与技术</span>
+        <span data-lang="en">Dual bachelor's degree candidate · Precision Instrument and Basic Science of Mathematics and Physics</span>
+        <span data-lang="es">Candidato a doble grado · Instrumentación de Precisión y Ciencias Básicas de Matemáticas y Física</span>
+        <span data-lang="zh">双学士学位在读 · 精密仪器 + 数理基础科学</span>
       </p>
       <ul class="bullets">
-        <li data-lang="en">GPA 3.93</li>
-        <li data-lang="zh">GPA：3.93</li>
+        <li data-lang="en">GPA 3.93 / 4.00</li>
+        <li data-lang="es">GPA 3.93 / 4.00</li>
+        <li data-lang="zh">GPA：3.93 / 4.00</li>
       </ul>
     </article>
   </section>
 
   <!-- ─────────────── SERVICE & PRACTICE ─────────────── -->
   <section id="experience">
-    <h2><span data-lang="en">Service &amp; Practice</span><span data-lang="zh">社会工作与实践</span></h2>
+    <h2><span data-lang="en">Service &amp; Practice</span>
+    <span data-lang="es">Servicio y práctica</span>
+    <span data-lang="zh">社会工作与实践</span></h2>
 
     <article class="entry">
       <div class="entry-head">
         <h3>
           <span data-lang="en">Class &amp; college roles — Weiyang College</span>
+          <span data-lang="es">Cargos en la clase y en Weiyang College</span>
           <span data-lang="zh">班级与书院学生工作 · 未央书院</span>
         </h3>
         <span class="period" data-lang="en">2025.09 – present</span>
+        <span class="period" data-lang="es">2025.09 – actualidad</span>
         <span class="period" data-lang="zh">2025.09 – 至今</span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">Class study committee member, then class League secretary</span>
+        <span data-lang="es">Miembro del comité de estudios de la clase y, después, secretario de la Liga Juvenil de la clase</span>
         <span data-lang="zh">班级学习委员 → 班级团支书</span>
       </p>
       <ul class="bullets">
         <li data-lang="en">Class study committee member in the first year and class League secretary since the second, leading the class's Youth League work.</li>
+        <li data-lang="es">Miembro del comité de estudios de la clase en el primer año y secretario de la Liga Juvenil desde el segundo, al frente de la labor de la Liga Juvenil de la clase.</li>
         <li data-lang="zh">大一学年任班级学习委员，大二起任班级团支书，牵头班级支部事业。</li>
         <li data-lang="en">While in office the class placed first in its year for average GPA and was named an A-level Youth League branch.</li>
+        <li data-lang="es">Durante mi mandato la clase quedó primera de su promoción por nota media y fue reconocida como rama de la Liga Juvenil de nivel A.</li>
         <li data-lang="zh">任职期间班级平均 GPA 年级第一，班级获评校甲级团支部。</li>
+        <li data-lang="en">Improved the 13-member class committee's efficiency by introducing AI tooling and streamlining its workflows.</li>
+        <li data-lang="es">Mejoré la eficiencia del comité de clase, formado por 13 miembros, introduciendo herramientas de IA y simplificando sus flujos de trabajo.</li>
+        <li data-lang="zh">引入 AI 工具并梳理工作流程，提升 13 人班委团队的工作效率。</li>
         <li data-lang="en">Joined Weiyang College's student science &amp; technology association in spring 2026; now also with the Weiyang Youth League publicity group, the Jiangxi Students Association's people-development department, and the Zijing Volunteer Service Corps' international team.</li>
+        <li data-lang="es">Me incorporé en la primavera de 2026 a la asociación de ciencia y tecnología estudiantil de Weiyang College; ahora también formo parte del grupo de comunicación del Comité de la Liga Juvenil de Weiyang, del departamento de desarrollo de talento de la Asociación de Estudiantes de Jiangxi y del equipo internacional del Cuerpo de Voluntariado Zijing.</li>
         <li data-lang="zh">大一下加入未央科协任部员；现任未央团委宣传组组员、赣协人力发展部部员、紫荆志愿总队国际志愿服务团组员。</li>
       </ul>
     </article>
@@ -197,21 +250,27 @@
       <div class="entry-head">
         <h3>
           <span data-lang="en">Field practice — four trips across China</span>
+          <span data-lang="es">Prácticas de campo — cuatro viajes por China</span>
           <span data-lang="zh">社会实践 · 四地实践</span>
         </h3>
         <span class="period" data-lang="en">2026</span>
+        <span class="period" data-lang="es">2026</span>
         <span class="period" data-lang="zh">2026</span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">Liangshan (Sichuan) · Qujing (Yunnan) · Kaili (Guizhou) · Jingmen (Hubei)</span>
+        <span data-lang="es">Liangshan (Sichuan) · Qujing (Yunnan) · Kaili (Guizhou) · Jingmen (Hubei)</span>
         <span data-lang="zh">四川凉山 · 云南曲靖 · 贵州凯里 · 湖北荆门</span>
       </p>
       <ul class="bullets">
         <li data-lang="en">Led the Qujing teaching-support trip as team leader, organising a complete field practice from scratch.</li>
+        <li data-lang="es">Dirigí el viaje de apoyo docente de Qujing como jefe de equipo, organizando desde cero una práctica de campo completa.</li>
         <li data-lang="zh">云南曲靖支教实践支队长：从零组织一次完整支教实践。</li>
         <li data-lang="en">The Liangshan and Kaili trips each won a Second Prize for field practice from Weiyang College.</li>
+        <li data-lang="es">Los viajes de Liangshan y de Kaili obtuvieron cada uno un Segundo Premio de prácticas de campo de Weiyang College.</li>
         <li data-lang="zh">四川凉山、贵州凯里实践均获未央书院二等奖。</li>
         <li data-lang="en">Jingmen (Hubei): the first Tsinghua teaching-support team ever to reach the city.</li>
+        <li data-lang="es">Jingmen (Hubei): el primer equipo de apoyo docente de Tsinghua que llega a la ciudad.</li>
         <li data-lang="zh">湖北荆门支教：清华支教支队首次来到荆门。</li>
       </ul>
     </article>
@@ -220,19 +279,24 @@
       <div class="entry-head">
         <h3>
           <span data-lang="en">Volunteering — 200+ hours</span>
+          <span data-lang="es">Voluntariado — 200+ horas</span>
           <span data-lang="zh">志愿服务 · 200+ 小时</span>
         </h3>
         <span class="period" data-lang="en">2025.09 – present</span>
+        <span class="period" data-lang="es">2025.09 – actualidad</span>
         <span class="period" data-lang="zh">2025.09 – 至今</span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">10+ projects · 200+ hours logged</span>
+        <span data-lang="es">10+ proyectos · 200+ horas registradas</span>
         <span data-lang="zh">志愿项目 10+ · 累计时长 200+ 小时</span>
       </p>
       <ul class="bullets">
         <li data-lang="en">Volunteered 200+ hours across ten projects, including the Challenge Cup, the Weiyang student festival and admissions interviews for the Strong Foundation programme.</li>
+        <li data-lang="es">He realizado 200+ horas de voluntariado en diez proyectos, entre ellos la Challenge Cup, el festival estudiantil de Weiyang y las entrevistas de admisión del programa Strong Foundation.</li>
         <li data-lang="zh">累计志愿服务 200 余小时，覆盖挑战杯、未央学生节、强基计划招生面试等大型活动。</li>
         <li data-lang="en">Teaching support accounts for the largest share: 49 hours in Qujing, Yunnan and 36 hours in Jingmen, Hubei.</li>
+        <li data-lang="es">El apoyo docente es la parte principal: 49 horas en Qujing (Yunnan) y 36 horas en Jingmen (Hubei).</li>
         <li data-lang="zh">其中支教类投入最多：云南曲靖 49 小时、湖北荆门 36 小时。</li>
       </ul>
     </article>
@@ -240,27 +304,37 @@
 
   <!-- ─────────────── PROJECTS ─────────────── -->
   <section id="projects">
-    <h2><span data-lang="en">Selected Projects</span><span data-lang="zh">主要项目</span></h2>
+    <h2><span data-lang="en">Selected Projects</span>
+    <span data-lang="es">Proyectos destacados</span>
+    <span data-lang="zh">主要项目</span></h2>
     <p class="section-note" data-lang="en">Independent work, all open source. Across the live sites: 25,000+ visits and 100+ GitHub stars.</p>
+    <p class="section-note" data-lang="es">Trabajo independiente, todo de código abierto. En conjunto, los sitios en línea suman 25,000+ visitas y 100+ estrellas en GitHub.</p>
     <p class="section-note" data-lang="zh">均为独立开发，全部开源；上线站点累计访问 2.5 万+，GitHub 星标 100+。</p>
 
     <article class="entry">
       <div class="entry-head">
         <h3>Nmail</h3>
-        <span class="period">2026.09 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+        <span class="period">2026.09 – <span data-lang="en">present</span>
+        <span data-lang="es">actualidad</span>
+        <span data-lang="zh">至今</span></span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">Local-first AI email client · Python, FastAPI, React · MIT · on PyPI, Homebrew &amp; winget</span>
+        <span data-lang="es">Cliente de correo con IA local-first · Python, FastAPI, React · MIT · en PyPI, Homebrew &amp; winget</span>
         <span data-lang="zh">本地优先 AI 邮箱客户端 · Python / FastAPI / React · MIT · 已上 PyPI、Homebrew 与 winget</span>
       </p>
       <ul class="bullets">
         <li data-lang="en">Aggregates multiple mailboxes into one inbox with 20 preset providers (Gmail, Outlook, QQ, 163) and one-click OAuth.</li>
+        <li data-lang="es">Agrega varios buzones en una sola bandeja de entrada con 20 proveedores predefinidos (Gmail, Outlook, QQ, 163) y OAuth con un solo clic.</li>
         <li data-lang="zh">多账号聚合到单一收件箱，内置 Gmail / Outlook / QQ / 163 等 20 家预设服务商，支持一键 OAuth 授权。</li>
         <li data-lang="en">An AI steward classifies, archives, drafts replies and compiles a daily digest — every write action requires explicit human approval and stays auditable and reversible.</li>
+        <li data-lang="es">Un administrador de IA clasifica, archiva, redacta respuestas y elabora un resumen diario — toda acción de escritura exige la aprobación humana explícita y queda auditable y reversible.</li>
         <li data-lang="zh">AI 总管家负责分类、归档、起草回复与生成每日摘要 —— 所有写操作必须经人工审批，全程可追溯、可撤销。</li>
         <li data-lang="en">Privacy by architecture: the service binds only to 127.0.0.1, with no account system, no telemetry and no cloud dependency; pointing it at Ollama or LM Studio enables fully offline inference.</li>
+        <li data-lang="es">Privacidad por arquitectura: el servicio solo escucha en 127.0.0.1, sin sistema de cuentas, sin telemetría y sin dependencia de la nube; apuntarlo a Ollama o LM Studio permite una inferencia totalmente offline.</li>
         <li data-lang="zh">从架构上保证隐私：服务仅监听 127.0.0.1，无账号体系、无遥测、不依赖云端；指向 Ollama / LM Studio 即可完全离线推理。</li>
         <li data-lang="en">Shipped to users through PyPI (<code>nmail-app</code>, 10 releases), Homebrew, winget and single-file executables for Windows, macOS and Linux.</li>
+        <li data-lang="es">Distribuido a los usuarios mediante PyPI (<code>nmail-app</code>, 10 versiones), Homebrew, winget y ejecutables de archivo único para Windows, macOS y Linux.</li>
         <li data-lang="zh">通过 PyPI（<code>nmail-app</code>，10 个版本）、Homebrew、winget 及 Windows / macOS / Linux 单文件可执行程序分发给用户。</li>
       </ul>
       <p class="links">
@@ -273,20 +347,27 @@
     <article class="entry">
       <div class="entry-head">
         <h3>LocalAIAssistant</h3>
-        <span class="period">2026.04 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+        <span class="period">2026.04 – <span data-lang="en">present</span>
+        <span data-lang="es">actualidad</span>
+        <span data-lang="zh">至今</span></span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">Cross-platform desktop AI assistant · C++17, Qt 6, ONNX Runtime · MIT</span>
+        <span data-lang="es">Asistente de IA de escritorio multiplataforma · C++17, Qt 6, ONNX Runtime · MIT</span>
         <span data-lang="zh">跨平台桌面 AI 助手 · C++17 / Qt 6 / ONNX Runtime · MIT</span>
       </p>
       <ul class="bullets">
         <li data-lang="en">A single binary offering both a GUI and a CLI, with SSE streaming output, persistent multi-session history, English/Chinese UI and light/dark/system themes.</li>
+        <li data-lang="es">Un único binario que ofrece GUI y CLI, con salida en streaming por SSE, historial persistente de varias sesiones, interfaz en inglés y chino y temas claro, oscuro y del sistema.</li>
         <li data-lang="zh">单一二进制同时提供 GUI 与 CLI，支持 SSE 流式输出、多会话历史持久化、中英双语界面与明暗 / 跟随系统主题。</li>
         <li data-lang="en">Built a retrieval module supporting TXT/MD/PDF/DOCX import, automatic chunking and vectorisation, and HNSW approximate nearest-neighbour search — all embeddings computed locally through ONNX Runtime with no network access.</li>
+        <li data-lang="es">Desarrollé un módulo de recuperación compatible con la importación de TXT/MD/PDF/DOCX, la fragmentación y vectorización automáticas y la búsqueda aproximada de vecinos más cercanos con HNSW — todas las representaciones vectoriales se calculan en local mediante ONNX Runtime, sin acceso a la red.</li>
         <li data-lang="zh">实现检索模块：支持 TXT/MD/PDF/DOCX 导入、自动切分与向量化、HNSW 近似最近邻检索；嵌入向量全部经 ONNX Runtime 本地推理，无需联网。</li>
         <li data-lang="en">Designed an agent loop (up to 10 iterations) that parses JSON task plans and executes them via native Qt file APIs rather than shell commands, with cross-platform shell detection where a shell is genuinely needed.</li>
+        <li data-lang="es">Diseñé un bucle de agente (hasta 10 iteraciones) que analiza planes de tareas en JSON y los ejecuta mediante las API de archivos nativas de Qt en lugar de comandos de shell, con detección de shell multiplataforma cuando de verdad se necesita un shell.</li>
         <li data-lang="zh">设计 Agent 迭代循环（最多 10 轮）：解析 JSON 任务计划，优先用 Qt 原生文件 API 而非 shell 执行，仅在必要时才做跨平台 Shell 探测。</li>
         <li data-lang="en">Implemented a three-tier command safety model — permanently blocked patterns, confirmed operations, and an allow-list — so that destructive commands cannot be reached by prompt injection alone.</li>
+        <li data-lang="es">Implementé un modelo de seguridad de comandos en tres niveles — patrones bloqueados de forma permanente, operaciones con confirmación y una lista de permitidos — para que los comandos destructivos no puedan alcanzarse solo con inyección de prompts.</li>
         <li data-lang="zh">实现三级命令安全模型 —— 永久拦截、二次确认、白名单执行 —— 使破坏性命令无法仅凭提示注入被触发。</li>
       </ul>
       <p class="links">
@@ -297,20 +378,27 @@
     <article class="entry">
       <div class="entry-head">
         <h3>Tsinghua Agent</h3>
-        <span class="period">2026.09 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+        <span class="period">2026.09 – <span data-lang="en">present</span>
+        <span data-lang="es">actualidad</span>
+        <span data-lang="zh">至今</span></span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">Long-running personal agent and MCP server · TypeScript, SQLite, MCP</span>
+        <span data-lang="es">Agente personal de ejecución prolongada y servidor MCP · TypeScript, SQLite, MCP</span>
         <span data-lang="zh">长程执行个人 agent 与 MCP server · TypeScript / SQLite / MCP</span>
       </p>
       <ul class="bullets">
         <li data-lang="en">Exposes 64 tools (34 read-only, 30 write/monitoring) over the Model Context Protocol, connecting through stdio to Claude Code, Cursor, Codex CLI and other local agents.</li>
+        <li data-lang="es">Expone 64 herramientas (34 de solo lectura y 30 de escritura y monitorización) a través del Model Context Protocol y se conecta por stdio a Claude Code, Cursor, Codex CLI y otros agentes locales.</li>
         <li data-lang="zh">通过 Model Context Protocol 暴露 64 个工具（34 个只读 + 30 个写 / 监控），经 stdio 接入 Claude Code、Cursor、Codex CLI 等本地 agent。</li>
         <li data-lang="en">Wrote a resident supervisor daemon that keeps sessions alive and pushes notifications on grades, electricity balance, card balance, campus news and course-registration windows.</li>
+        <li data-lang="es">Escribí un demonio supervisor residente que mantiene vivas las sesiones y envía notificaciones sobre calificaciones, saldo de electricidad, saldo de la tarjeta, noticias del campus y ventanas de matriculación de asignaturas.</li>
         <li data-lang="zh">编写常驻 supervisor 守护进程，维持会话存活，并在成绩、电费、卡余额、校内新闻与选课窗口变化时推送通知。</li>
         <li data-lang="en">Records an audit trail, pending confirmations and monitoring rules in SQLite; automates TOTP two-factor authentication end to end.</li>
+        <li data-lang="es">Registra en SQLite un historial de auditoría, las confirmaciones pendientes y las reglas de monitorización; automatiza de principio a fin la autenticación en dos pasos por TOTP.</li>
         <li data-lang="zh">以 SQLite 记录审计日志、待确认操作与监控规则；端到端自动化 TOTP 二次认证。</li>
         <li data-lang="en">Structured as a pnpm monorepo separating the protocol layer, session core, MCP server, supervisor and CLI.</li>
+        <li data-lang="es">Estructurado como un monorepo de pnpm que separa la capa de protocolo, el núcleo de sesión, el servidor MCP, el supervisor y la CLI.</li>
         <li data-lang="zh">组织为 pnpm monorepo，分离协议层、会话内核、MCP server、supervisor 与 CLI。</li>
       </ul>
       <p class="links">
@@ -321,20 +409,27 @@
     <article class="entry">
       <div class="entry-head">
         <h3>TsinghuaSurvive</h3>
-        <span class="period">2026.07 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+        <span class="period">2026.07 – <span data-lang="en">present</span>
+        <span data-lang="es">actualidad</span>
+        <span data-lang="zh">至今</span></span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">Student-written survival guide for Tsinghua · Astro Starlight, TypeScript</span>
+        <span data-lang="es">Guía de supervivencia para Tsinghua escrita por estudiantes · Astro Starlight, TypeScript</span>
         <span data-lang="zh">面向清华在校生的经验分享站 · Astro Starlight / TypeScript</span>
       </p>
       <ul class="bullets">
         <li data-lang="en">Live at tsinghua.nathanpenny.fun, written from a student's point of view rather than an official one.</li>
+        <li data-lang="es">En línea en tsinghua.nathanpenny.fun, escrita desde el punto de vista del estudiante y no desde el oficial.</li>
         <li data-lang="zh">已上线 tsinghua.nathanpenny.fun，内容来自学生视角而非官方口径。</li>
         <li data-lang="en">Integrated an in-site CMS so contributors can edit text, drop in images and embed video without touching Git; media is converted to WebP and stored on R2 rather than committed.</li>
+        <li data-lang="es">Integré un CMS dentro del sitio para que quienes colaboran puedan editar texto, insertar imágenes e incrustar vídeo sin tocar Git; los archivos multimedia se convierten a WebP y se almacenan en R2 en lugar de incluirse en el repositorio.</li>
         <li data-lang="zh">接入站内 CMS，贡献者无需接触 Git 即可改文字、拖图、嵌视频；媒体自动转 WebP 并存储于 R2，不进入版本库。</li>
         <li data-lang="en">Built a content-freshness policy engine that flags material as stale after a configurable window, with draft/outdated states and review timestamps validated in CI.</li>
+        <li data-lang="es">Desarrollé un motor de políticas de vigencia del contenido que marca el material como obsoleto tras un plazo configurable, con estados de borrador y desactualizado y marcas de tiempo de revisión validadas en CI.</li>
         <li data-lang="zh">实现内容时效策略引擎：超过可配置期限自动标记为过期，草稿 / 过期状态与复核时间戳由 CI 校验。</li>
         <li data-lang="en">Continuous deployment on push to main, with content and link-checking checks guarding every change.</li>
+        <li data-lang="es">Despliegue continuo al hacer push a main, con comprobaciones de contenido y de enlaces que verifican cada cambio.</li>
         <li data-lang="zh">推送 main 即自动构建部署，每次变更都有内容校验与链接检查把关。</li>
       </ul>
       <p class="links">
@@ -346,18 +441,24 @@
     <article class="entry">
       <div class="entry-head">
         <h3>DeepLearningCourseForMe</h3>
-        <span class="period">2026.08 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+        <span class="period">2026.08 – <span data-lang="en">present</span>
+        <span data-lang="es">actualidad</span>
+        <span data-lang="zh">至今</span></span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">Self-taught deep learning curriculum · Python, Jupyter · MIT · 8 modules, 62 lessons</span>
+        <span data-lang="es">Plan de estudios de aprendizaje profundo autodidacta · Python, Jupyter · MIT · 8 módulos, 62 lecciones</span>
         <span data-lang="zh">深度学习自学课程 · Python / Jupyter · MIT · 8 个模块、62 讲</span>
       </p>
       <ul class="bullets">
         <li data-lang="en">Wrote 62 lessons of notes and runnable code across 8 modules, built from first principles and paired with a video series.</li>
+        <li data-lang="es">Escribí 62 lecciones de apuntes y código ejecutable repartidas en 8 módulos, construidas desde los primeros principios y acompañadas de una serie de vídeos.</li>
         <li data-lang="zh">撰写 8 个模块、62 讲的笔记与可运行代码，从第一性原理出发，并配套同名视频系列。</li>
         <li data-lang="en">Covers linear algebra, calculus, probability and statistics, neural-network fundamentals, CNN/Transformer architectures, computer vision, large language models and applied ML engineering.</li>
+        <li data-lang="es">Abarca álgebra lineal, cálculo, probabilidad y estadística, fundamentos de redes neuronales, arquitecturas CNN/Transformer, visión por computador, grandes modelos de lenguaje e ingeniería de ML aplicada.</li>
         <li data-lang="zh">覆盖线性代数、微积分、概率统计、神经网络核心、CNN / Transformer、计算机视觉、大语言模型与应用工程实战。</li>
         <li data-lang="en">Each module carries its own locked virtual environment managed with uv, so any single lesson can be reproduced in isolation.</li>
+        <li data-lang="es">Cada módulo tiene su propio entorno virtual bloqueado y gestionado con uv, de modo que cualquier lección puede reproducirse de forma aislada.</li>
         <li data-lang="zh">每个模块拥有独立且锁定依赖的虚拟环境（uv 管理），任意一讲都可单独复现。</li>
       </ul>
       <p class="links">
@@ -368,14 +469,18 @@
     <article class="entry">
       <div class="entry-head">
         <h3>焰境 · 万载（whizzzest.com）</h3>
-        <span class="period">2026 – <span data-lang="en">present</span><span data-lang="zh">至今</span></span>
+        <span class="period">2026 – <span data-lang="en">present</span>
+        <span data-lang="es">actualidad</span>
+        <span data-lang="zh">至今</span></span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">Digital showcase for my hometown's fireworks culture · full-stack · Sanchuang competition entry</span>
+        <span data-lang="es">Escaparate digital de la cultura pirotécnica de mi ciudad natal · full-stack · candidatura al concurso Sanchuang</span>
         <span data-lang="zh">家乡江西万载烟花文化的数字化宣传站 · 全栈开发 · 三创赛参赛作品</span>
       </p>
       <ul class="bullets">
         <li data-lang="en">Built the site end to end around the theme “meet once, and it lasts ten thousand years”, turning Wanzai's thousand-year fireworks heritage into something people can browse and share.</li>
+        <li data-lang="es">Construí el sitio de principio a fin en torno al lema «un encuentro, y dura diez mil años», convirtiendo el milenario legado pirotécnico de Wanzai en algo que cualquiera puede explorar y compartir.</li>
         <li data-lang="zh">以「一朝相逢，便是万载」为主题完成全栈开发，把万载千年烟花文化做成可浏览、可分享的数字体验。</li>
       </ul>
       <p class="links">
@@ -386,63 +491,112 @@
 
     <p class="also">
       <span data-lang="en"><strong>Also:</strong></span>
+      <span data-lang="es"><strong>Además:</strong></span>
       <span data-lang="zh"><strong>其他：</strong></span>
-      <a href="https://github.com/pan-nie/nmail-site">nmail-site</a><span data-lang="en"> (Astro&nbsp;5 marketing site, zero client-side JS, Cloudflare Workers)</span><span data-lang="zh">（Astro&nbsp;5 官网，零客户端 JS，Cloudflare Workers 部署）</span>,
-      <a href="https://github.com/pan-nie/wechat-article">wechat-article</a><span data-lang="en"> (Python toolchain automating WeChat article production)</span><span data-lang="zh">（自动化微信公众号内容生产的 Python 工具链）</span>.
+      <a href="https://github.com/pan-nie/nmail-site">nmail-site</a><span data-lang="en"> (Astro&nbsp;5 marketing site, zero client-side JS, Cloudflare Workers)</span>
+      <span data-lang="es">(sitio promocional en Astro&nbsp;5, sin JS en el cliente, Cloudflare Workers)</span>
+      <span data-lang="zh">（Astro&nbsp;5 官网，零客户端 JS，Cloudflare Workers 部署）</span>,
+      <a href="https://github.com/pan-nie/wechat-article">wechat-article</a><span data-lang="en"> (Python toolchain automating WeChat article production)</span>
+      <span data-lang="es">(cadena de herramientas en Python que automatiza la producción de artículos de WeChat)</span>
+      <span data-lang="zh">（自动化微信公众号内容生产的 Python 工具链）</span>.
     </p>
   </section>
 
   <!-- ─────────────── SKILLS ─────────────── -->
   <section id="skills">
-    <h2><span data-lang="en">Technical Skills</span><span data-lang="zh">技术能力</span></h2>
+    <h2><span data-lang="en">Technical Skills</span>
+    <span data-lang="es">Competencias técnicas</span>
+    <span data-lang="zh">技术能力</span></h2>
 
     <dl class="skills">
       <div class="skill-row">
-        <dt><span data-lang="en">Languages</span><span data-lang="zh">编程语言</span></dt>
+        <dt><span data-lang="en">Languages</span>
+        <span data-lang="es">Lenguajes</span>
+        <span data-lang="zh">编程语言</span></dt>
         <dd>Python · TypeScript / JavaScript · C++ (C++17) · HTML / CSS · SQL</dd>
       </div>
       <div class="skill-row">
-        <dt><span data-lang="en">Frameworks</span><span data-lang="zh">框架与运行时</span></dt>
+        <dt><span data-lang="en">Frameworks</span>
+        <span data-lang="es">Frameworks</span>
+        <span data-lang="zh">框架与运行时</span></dt>
         <dd>FastAPI · React · Qt&nbsp;6 · Astro · Node.js</dd>
       </div>
       <div class="skill-row">
-        <dt><span data-lang="en">AI &amp; Data</span><span data-lang="zh">AI 与数据</span></dt>
-        <dd><span data-lang="en">Model Context Protocol (MCP) · LLM agent design · RAG / vector retrieval · ONNX Runtime · HNSW · SQLite</span><span data-lang="zh">Model Context Protocol（MCP）· LLM agent 设计 · RAG / 向量检索 · ONNX Runtime · HNSW · SQLite</span></dd>
+        <dt><span data-lang="en">AI &amp; Data</span>
+        <span data-lang="es">IA y datos</span>
+        <span data-lang="zh">AI 与数据</span></dt>
+        <dd><span data-lang="en">Model Context Protocol (MCP) · LLM agent design · RAG / vector retrieval · PyTorch / deep learning · ONNX Runtime · HNSW · SQLite</span>
+        <span data-lang="es">Model Context Protocol (MCP) · diseño de agentes LLM · RAG / recuperación vectorial · PyTorch / aprendizaje profundo · ONNX Runtime · HNSW · SQLite</span>
+        <span data-lang="zh">Model Context Protocol（MCP）· LLM agent 设计 · RAG / 向量检索 · PyTorch / 深度学习 · ONNX Runtime · HNSW · SQLite</span></dd>
       </div>
       <div class="skill-row">
-        <dt><span data-lang="en">Systems</span><span data-lang="zh">系统与协议</span></dt>
-        <dd><span data-lang="en">Desktop application architecture · REST &amp; SSE · OAuth · IMAP / SMTP · PWA &amp; Service Workers</span><span data-lang="zh">桌面应用架构 · REST 与 SSE · OAuth · IMAP / SMTP · PWA 与 Service Worker</span></dd>
+        <dt><span data-lang="en">Systems</span>
+        <span data-lang="es">Sistemas</span>
+        <span data-lang="zh">系统与协议</span></dt>
+        <dd><span data-lang="en">Desktop application architecture · REST &amp; SSE · OAuth · IMAP / SMTP · PWA &amp; Service Workers</span>
+        <span data-lang="es">Arquitectura de aplicaciones de escritorio · REST &amp; SSE · OAuth · IMAP / SMTP · PWA &amp; Service Workers</span>
+        <span data-lang="zh">桌面应用架构 · REST 与 SSE · OAuth · IMAP / SMTP · PWA 与 Service Worker</span></dd>
       </div>
       <div class="skill-row">
-        <dt><span data-lang="en">Tooling</span><span data-lang="zh">工程工具</span></dt>
-        <dd>Git · GitHub Actions · Cloudflare Workers / Pages · uv · pnpm · CMake / qmake</dd>
+        <dt><span data-lang="en">Tooling</span>
+        <span data-lang="es">Herramientas</span>
+        <span data-lang="zh">工程工具</span></dt>
+        <dd>Git · GitHub Actions · Cloudflare Workers / Pages · Docker · uv · pnpm · CMake / qmake</dd>
       </div>
       <div class="skill-row">
-        <dt><span data-lang="en">Languages spoken</span><span data-lang="zh">自然语言</span></dt>
-        <dd><span data-lang="en">Chinese (native) · English (CET-4 672 / CET-6 583, professional working proficiency)</span><span data-lang="zh">中文（母语）· 英语（CET-4 672 / CET-6 583，可作为工作语言）</span></dd>
+        <dt><span data-lang="en">Languages spoken</span>
+        <span data-lang="es">Idiomas</span>
+        <span data-lang="zh">自然语言</span></dt>
+        <dd><span data-lang="en">Chinese (native) · English (CET-4 672 / CET-6 583, professional working proficiency) · Spanish (basic)</span>
+        <span data-lang="es">Chino (nativo) · Inglés (CET-4 672 / CET-6 583, competencia profesional plena) · Español (básico)</span>
+        <span data-lang="zh">中文（母语）· 英语（CET-4 672 / CET-6 583，可作为工作语言） · 西班牙语（基础）</span></dd>
       </div>
     </dl>
   </section>
 
   <!-- ─────────────── AWARDS ─────────────── -->
   <section id="awards">
-    <h2><span data-lang="en">Honours &amp; Awards</span><span data-lang="zh">荣誉与奖项</span></h2>
+    <h2><span data-lang="en">Honours &amp; Awards</span>
+    <span data-lang="es">Honores y premios</span>
+    <span data-lang="zh">荣誉与奖项</span></h2>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>
+          <span data-lang="en">Comprehensive Excellence Scholarship — Tsinghua University</span>
+          <span data-lang="es">Beca de Excelencia Integral — Tsinghua University</span>
+          <span data-lang="zh">清华大学综合优秀奖学金</span>
+        </h3>
+        <span class="period" data-lang="en">2026</span>
+        <span class="period" data-lang="es">2026</span>
+        <span class="period" data-lang="zh">2026</span>
+      </div>
+      <p class="entry-sub">
+        <span data-lang="en">University-level award</span>
+        <span data-lang="es">Premio de ámbito universitario</span>
+        <span data-lang="zh">校级奖学金</span>
+      </p>
+    </article>
 
     <article class="entry">
       <div class="entry-head">
         <h3>
           <span data-lang="en">E-Commerce Innovation Challenge — Second Prize, Beijing round</span>
+          <span data-lang="es">E-Commerce Innovation Challenge — Segundo Premio, fase de Pekín</span>
           <span data-lang="zh">全国大学生电子商务「创新、创意及创业」挑战赛 · 北京市二等奖</span>
         </h3>
         <span class="period" data-lang="en">2026</span>
+        <span class="period" data-lang="es">2026</span>
         <span class="period" data-lang="zh">2026</span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">16th national edition · cross-university team · I did the full-stack website development</span>
+        <span data-lang="es">16.ª edición nacional · equipo interuniversitario · me encargué del desarrollo full-stack del sitio web</span>
         <span data-lang="zh">第十六届 · 跨校团队 · 负责网站全栈开发</span>
       </p>
       <ul class="bullets">
         <li data-lang="en">Competed as part of a cross-university team; built the full-stack site behind the entry (the 焰境 · 万载 project above).</li>
+        <li data-lang="es">Participé con un equipo interuniversitario y desarrollé el sitio full-stack del proyecto presentado (el proyecto 焰境 · 万载 de arriba).</li>
         <li data-lang="zh">与京内多所高校同学组队参赛，负责参赛作品（见上「焰境 · 万载」）的全栈网站开发。</li>
       </ul>
     </article>
@@ -451,17 +605,21 @@
       <div class="entry-head">
         <h3>
           <span data-lang="en">3rd Tsinghua University “Carbon Neutrality” Student Innovation Competition — Second Prize</span>
+          <span data-lang="es">3rd Tsinghua University «Neutralidad de Carbono» Student Innovation Competition — Segundo Premio</span>
           <span data-lang="zh">清华大学第三届「碳中和」学生创新大赛 二等奖</span>
         </h3>
         <span class="period" data-lang="en">2026</span>
+        <span class="period" data-lang="es">2026</span>
         <span class="period" data-lang="zh">2026</span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">Project: an intelligent water-surface litter-cleaning robot using disturbance sensing and visual tracking</span>
+        <span data-lang="es">Proyecto: robot inteligente de limpieza de residuos en la superficie del agua mediante detección de perturbaciones y seguimiento visual</span>
         <span data-lang="zh">作品：《基于扰动感知与视觉跟踪的水面垃圾智能清理机器人》</span>
       </p>
       <ul class="bullets">
         <li data-lang="en">Designed the boat's entire 3D structure and the project poster for the team entry.</li>
+        <li data-lang="es">Diseñé toda la estructura 3D de la embarcación y el cartel del proyecto para la candidatura del equipo.</li>
         <li data-lang="zh">负责小船全部 3D 结构设计以及项目海报设计。</li>
       </ul>
     </article>
@@ -470,13 +628,16 @@
       <div class="entry-head">
         <h3>
           <span data-lang="en">Weiyang College Field Practice Award — Second Prize (twice)</span>
+          <span data-lang="es">Premio de Prácticas de Campo de Weiyang College — Segundo Premio (dos veces)</span>
           <span data-lang="zh">未央书院社会实践二等奖（两次）</span>
         </h3>
         <span class="period" data-lang="en">2026</span>
+        <span class="period" data-lang="es">2026</span>
         <span class="period" data-lang="zh">2026</span>
       </div>
       <p class="entry-sub">
         <span data-lang="en">Liangshan (Sichuan) team · Kaili (Guizhou) team</span>
+        <span data-lang="es">Equipo de Liangshan (Sichuan) · Equipo de Kaili (Guizhou)</span>
         <span data-lang="zh">四川凉山支队 · 贵州凯里支队</span>
       </p>
     </article>
@@ -497,6 +658,7 @@
     </p>
     <p class="fine">
       <span data-lang="en">Last updated <time datetime="2026-10-07">October 2026</time></span>
+      <span data-lang="es">Última actualización: <time datetime="2026-10-07">octubre de 2026</time></span>
       <span data-lang="zh">最后更新：<time datetime="2026-10-07">2026 年 10 月</time></span>
     </p>
   </div>

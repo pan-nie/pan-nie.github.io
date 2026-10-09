@@ -57,9 +57,12 @@ html[data-theme="dark"] {
   }
 }
 
-/* ---------- i18n switching ---------- */
-html[data-lang="en"] [data-lang="zh"],
-html[data-lang="zh"] [data-lang="en"] { display: none !important; }
+/* ---------- i18n switching (en / zh / es) ----------
+   Whatever language is selected, hide every other language's copy. Written with
+   :not() so adding a fourth language means adding one selector, not three. */
+html[data-lang="en"] [data-lang]:not([data-lang="en"]),
+html[data-lang="zh"] [data-lang]:not([data-lang="zh"]),
+html[data-lang="es"] [data-lang]:not([data-lang="es"]) { display: none !important; }
 
 /* ---------- reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -176,7 +179,8 @@ code {
 .lang-switch button + button { border-left: 1px solid var(--rule-strong); }
 .lang-switch button:hover { color: var(--fg); background: var(--bg-soft); }
 html[data-lang="en"] .lang-switch button[data-set-lang="en"],
-html[data-lang="zh"] .lang-switch button[data-set-lang="zh"] {
+html[data-lang="zh"] .lang-switch button[data-set-lang="zh"],
+html[data-lang="es"] .lang-switch button[data-set-lang="es"] {
   background: var(--accent);
   color: #fff;
 }
@@ -219,6 +223,7 @@ html[data-theme="dark"] #theme-toggle .i-moon { display: none; }
   font-size: clamp(2rem, 5vw, 2.6rem);
   font-weight: 680;
   letter-spacing: -0.03em;
+  text-align: center;
 }
 
 .role {
